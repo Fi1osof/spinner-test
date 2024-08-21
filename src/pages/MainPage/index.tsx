@@ -1,13 +1,25 @@
 import { NextSeo } from 'next-seo'
 
 import { Page } from '../_App/interfaces'
+import { useEffect } from 'react'
+import { Spinner } from './Spinner'
+
+const spinnerContainerId = 'spinner-container'
 
 export const MainPage: Page = () => {
+  useEffect(() => {
+    try {
+      new Spinner(`#${spinnerContainerId}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
+
   return (
     <>
-      <NextSeo title="Main page" description="Main page description" />
+      <NextSeo title="Spinner" description="" />
 
-      <div>Main Page</div>
+      <div id={spinnerContainerId} />
     </>
   )
 }
